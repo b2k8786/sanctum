@@ -66,11 +66,11 @@ Please follow the link for Laravel installation https://laravel.com/docs/8.x/ins
     });
     ```
 
-Add parameter to http header while requesting
-```http
-Authorization:Bearer <token>
-```
-Example
-```http
-Authorization:Bearer jABH69Z2wMcDBh4iRW8ySaLvwHZPJEyuPX9gSXbQ
-```
+- Add parameter to http header while requesting
+    ```http
+    Authorization:Bearer <token>
+    ```
+    Example
+    ```http
+    Authorization:Bearer jABH69Z2wMcDBh4iRW8ySaLvwHZPJEyuPX9gSXbQ
+    ```
