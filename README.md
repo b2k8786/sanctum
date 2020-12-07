@@ -65,3 +65,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 	Route::get('/getAll', [UserController::class, 'list']);
 });
 ```
+
+Add parameter to http header while requesting
+```http
+Authorization:Bearer jABH69Z2wMcDBh4iRW8ySaLvwHZPJEyuPX9gSXbQ
