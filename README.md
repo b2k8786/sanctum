@@ -5,7 +5,8 @@ Please follow the link for Laravel installation https://laravel.com/docs/8.x/ins
 #### Steps for Sanctum
 
 - Install Sanctum via composer
-> composer require laravel/sanctum
+```bash
+composer require laravel/sanctum
 
 - Run migrations do that token tables by Sanctum can be added to database
 >php artisan migrate
