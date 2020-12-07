@@ -38,8 +38,6 @@ So the portion should look like this
     ```php
         use HasApiTokens
     ```
- to our Model class
-        
     Example:
     ```php
 		use Laravel\Sanctum\HasApiTokens;
@@ -51,6 +49,7 @@ So the portion should look like this
 		{
             use HasApiTokens, HasFactory, Notifiable;
     ```
+
 - Example to generate a token and return via json
 ```php
 	$token = $user->createToken('x-api-token')->plainTextToken;
@@ -58,7 +57,8 @@ So the portion should look like this
         'token' => $token
     ];
     return response($response, 200);
-```		
+```
+
 - Route for the action require authentication via sectum.
 ```php
 		Route::group(['middleware' => 'auth:sanctum'], function () {
