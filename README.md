@@ -16,8 +16,8 @@ php artisan migrate
 ```bash
 php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
 ```
-- Add Sanctum middleware to Laravel's kernel
-app/Http/Kernel.php update the $middlewareGroups['api'] (Already there) just add the following class
+- Add Sanctum middleware to Laravel's kernel<br>
+```app/Http/Kernel.php update``` the ```$middlewareGroups['api']``` (Already there) just add the following class
 ```php
 \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class
 ```
