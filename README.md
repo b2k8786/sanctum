@@ -8,7 +8,7 @@ Please follow the link for Laravel installation https://laravel.com/docs/8.x/ins
 ```bash
 composer require laravel/sanctum
 ```
-- Run migrations do that token tables by Sanctum can be added to database
+- Run migrations, do that so token tables by Sanctum can be added to database
 ```bash
 php artisan migrate
 ```
