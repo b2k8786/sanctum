@@ -7,15 +7,18 @@ Please follow the link for Laravel installation https://laravel.com/docs/8.x/ins
 - Install Sanctum via composer
 ```bash
 composer require laravel/sanctum
-
+```
 - Run migrations do that token tables by Sanctum can be added to database
->php artisan migrate
-
+```bash
+php artisan migrate
+```
 - Add Sanctum provider to Laravel
-> php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
-
+```bash
+php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+```
 - Add Sanctum middleware to Laravel's kernel
->app/Http/Kernel.php update the $middlewareGroups['api'] (Already there) just add the following class
+```php
+app/Http/Kernel.php update the $middlewareGroups['api'] (Already there) just add the following class
 
 	>     \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class
 
@@ -25,7 +28,7 @@ composer require laravel/sanctum
 				'throttle:api',
 				\Illuminate\Routing\Middleware\SubstituteBindings::class,
 			]
-		
+```
 - Additions to Model (We have to import)
      Class:
         use Laravel\Sanctum\HasApiTokens;
