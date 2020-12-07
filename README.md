@@ -40,28 +40,28 @@ So the portion should look like this
     ```
     Example:
     ```php
-		use Laravel\Sanctum\HasApiTokens;
-		use Illuminate\Notifications\Notifiable;
-		use Illuminate\Database\Eloquent\Factories\HasFactory;
-        use Illuminate\Foundation\Auth\User as Authenticatable;
+	use Laravel\Sanctum\HasApiTokens;
+	use Illuminate\Notifications\Notifiable;
+	use Illuminate\Database\Eloquent\Factories\HasFactory;
+    use Illuminate\Foundation\Auth\User as Authenticatable;
 
-		class User extends Authenticatable
-		{
-            use HasApiTokens, HasFactory, Notifiable;
+	class User extends Authenticatable
+	{
+        use HasApiTokens, HasFactory, Notifiable;
     ```
 
 - Example to generate a token and return via json
 ```php
-	$token = $user->createToken('x-api-token')->plainTextToken;
-    $response = [
-        'token' => $token
-    ];
-    return response($response, 200);
+$token = $user->createToken('x-api-token')->plainTextToken;
+$response = [
+    'token' => $token
+];
+return response($response, 200);
 ```
 
 - Route for the action require authentication via sectum.
 ```php
-		Route::group(['middleware' => 'auth:sanctum'], function () {
-			Route::get('/getAll', [UserController::class, 'list']);
-		});
+Route::group(['middleware' => 'auth:sanctum'], function () {
+	Route::get('/getAll', [UserController::class, 'list']);
+});
 ```
