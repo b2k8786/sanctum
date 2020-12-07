@@ -69,6 +69,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 Add parameter to http header while requesting
 ```http
 Authorization:Bearer <token>
+```
 Example
 ```http
 Authorization:Bearer jABH69Z2wMcDBh4iRW8ySaLvwHZPJEyuPX9gSXbQ
+```
