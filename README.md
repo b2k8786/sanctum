@@ -19,4 +19,13 @@
         Run migrations do that token tables by Sanctum can be added to database
         <pre>php artisan migrate</pre>
      </li>
+    <li>
+        Add Sanctum provider to Laravel
+        <pre>php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"</pre>
+     </li>
+    <li>
+        Add Sanctum middleware to Laravel's kernel<br/>
+        app/Http/Kernel.php inside the <pre>$middlewareGroups[]</pre> (Already there) just add the following class
+        <pre>\Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,</pre>
+     </li>
 </ul>
