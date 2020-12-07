@@ -16,7 +16,7 @@ Please follow the link for Laravel installation https://laravel.com/docs/8.x/ins
     ```bash
     php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
     ```
-- Add Sanctum middleware to Laravel's kernel<br>
+- Add Sanctum middleware to Laravel's kernel
     ```app/Http/Kernel.php``` update the ```$middlewareGroups['api']``` (Already there) just add the following class
     ```php
     \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class
