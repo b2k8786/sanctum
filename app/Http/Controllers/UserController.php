@@ -20,7 +20,7 @@ class UserController extends Controller
             ], 404);
         }
 
-        $token = $user->createToken('my-app-token')->plainTextToken;
+        $token = $user->createToken('x-api-token')->plainTextToken;
 
         $response = [
             'user' => $user,
