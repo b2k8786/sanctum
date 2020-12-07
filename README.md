@@ -25,7 +25,15 @@
      </li>
     <li>
         Add Sanctum middleware to Laravel's kernel<br/>
-        app/Http/Kernel.php inside the <pre>$middlewareGroups[]</pre> (Already there) just add the following class
-        <pre>\Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,</pre>
+        app/Http/Kernel.php update the <pre>$middlewareGroups['api']</pre> (Already there) just add the following class
+        <pre>\Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class</pre>
+        So the portion should look like this
+        <pre>
+            'api' => [
+                \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+                'throttle:api',
+                \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            ]
+        </pre>
      </li>
 </ul>
