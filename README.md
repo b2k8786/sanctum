@@ -5,30 +5,30 @@ Please follow the link for Laravel installation https://laravel.com/docs/8.x/ins
 #### Steps for Sanctum
 
 - Install Sanctum via composer
-```bash
-composer require laravel/sanctum
-```
+    ```bash
+    composer require laravel/sanctum
+    ```
 - Run migrations, do that so token tables by Sanctum can be added to database
-```bash
-php artisan migrate
-```
+    ```bash
+    php artisan migrate
+    ```
 - Add Sanctum provider to Laravel
-```bash
-php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
-```
+    ```bash
+    php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+    ```
 - Add Sanctum middleware to Laravel's kernel<br>
-```app/Http/Kernel.php``` update the ```$middlewareGroups['api']``` (Already there) just add the following class
-```php
-\Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class
-```
-So the portion should look like this
-```php
-'api' => [
-    Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
-    'throttle:api',
-    Illuminate\Routing\Middleware\SubstituteBindings::class,
-]
-```
+    ```app/Http/Kernel.php``` update the ```$middlewareGroups['api']``` (Already there) just add the following class
+    ```php
+    \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class
+    ```
+    So the portion should look like this
+    ```php
+    'api' => [
+        Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+        'throttle:api',
+        Illuminate\Routing\Middleware\SubstituteBindings::class,
+    ]
+    ```
 - Additions to Model (We have to import)
     Class:
     ```php
@@ -51,20 +51,20 @@ So the portion should look like this
     ```
 
 - Example to generate a token and return via json
-```php
-$token = $user->createToken('x-api-token')->plainTextToken;
-$response = [
-    'token' => $token
-];
-return response($response, 200);
-```
+    ```php
+    $token = $user->createToken('x-api-token')->plainTextToken;
+    $response = [
+        'token' => $token
+    ];
+    return response($response, 200);
+    ```
 
-- Route for the action require authentication via sectum.
-```php
-Route::group(['middleware' => 'auth:sanctum'], function () {
-	Route::get('/getAll', [UserController::class, 'list']);
-});
-```
+    - Route for the action require authentication via sectum.
+    ```php
+    Route::group(['middleware' => 'auth:sanctum'], function () {
+        Route::get('/getAll', [UserController::class, 'list']);
+    });
+    ```
 
 Add parameter to http header while requesting
 ```http
