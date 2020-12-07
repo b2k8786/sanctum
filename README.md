@@ -23,11 +23,11 @@ app/Http/Kernel.php update the $middlewareGroups['api'] (Already there) just add
 ```
 So the portion should look like this
 ```php
-	'api' => [
-				\Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
-				'throttle:api',
-				\Illuminate\Routing\Middleware\SubstituteBindings::class,
-			]
+'api' => [
+			Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+			'throttle:api',
+			Illuminate\Routing\Middleware\SubstituteBindings::class,
+]
 ```
 - Additions to Model (We have to import)
      Class:
