@@ -29,11 +29,11 @@
         <pre>\Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class</pre>
         So the portion should look like this
         <pre>
-            'api' => [
-                \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
-                'throttle:api',
-                \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            ]
+        'api' => [
+            \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+            'throttle:api',
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ]
         </pre>
      </li>
 </ul>
