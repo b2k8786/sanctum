@@ -24,41 +24,44 @@ app/Http/Kernel.php update the $middlewareGroups['api'] (Already there) just add
 So the portion should look like this
 ```php
 'api' => [
-Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
-'throttle:api',
-Illuminate\Routing\Middleware\SubstituteBindings::class,
+    Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+    'throttle:api',
+    Illuminate\Routing\Middleware\SubstituteBindings::class,
 ]
 ```
 - Additions to Model (We have to import)
-     Class:
+    Class:
+    ```php
         use Laravel\Sanctum\HasApiTokens;
-				
-     Trait:
+	```
+    Trait:
+    ```php
         use HasApiTokens
-				
+    ```
  to our Model class
         
-	Example:
-			    use Laravel\Sanctum\HasApiTokens;
-				use Illuminate\Notifications\Notifiable;
-				use Illuminate\Database\Eloquent\Factories\HasFactory;
-				use Illuminate\Foundation\Auth\User as Authenticatable;
+    Example:
+    ```php
+		use Laravel\Sanctum\HasApiTokens;
+		use Illuminate\Notifications\Notifiable;
+		use Illuminate\Database\Eloquent\Factories\HasFactory;
+        use Illuminate\Foundation\Auth\User as Authenticatable;
 
-				class User extends Authenticatable
-				{
-					use HasApiTokens, HasFactory, Notifiable;
+		class User extends Authenticatable
+		{
+            use HasApiTokens, HasFactory, Notifiable;
+    ```
 - Example to generate a token and return via json
-
-		$token = $user->createToken('x-api-token')->plainTextToken;
-
-        $response = [
-            'token' => $token
-        ];
-
-        return response($response, 200);
-		
+```php
+	$token = $user->createToken('x-api-token')->plainTextToken;
+    $response = [
+        'token' => $token
+    ];
+    return response($response, 200);
+```		
 - Route for the action require authentication via sectum.
-
+```php
 		Route::group(['middleware' => 'auth:sanctum'], function () {
 			Route::get('/getAll', [UserController::class, 'list']);
 		});
+```
